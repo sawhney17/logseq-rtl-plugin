@@ -1,0 +1,1 @@
+# logseq-rtl-plugin
