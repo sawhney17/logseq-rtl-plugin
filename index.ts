@@ -7,7 +7,7 @@ const main = async () => {
         if (mutation.type === 'childList' && mutation.removedNodes.length > 0 && mutation.removedNodes[0].className === 'editor-inner block-editor') {
           const uuid = mutation.target.closest('div[id^="ls-block"]')?.getAttribute('blockid');
           const currentBlock = await logseq.App.getBlock(uuid)
-          if (currentBlock.content.match(/[اأإء-ي]/ui)){
+          if (currentBlock.content.match(/[اأإء-ي]/ui) || currentBlock.content.match(/.*[א-ת].*/)){
             logseq.provideStyle(`.ls-block[blockid = "${uuid}"]{direction: rtl;}`)
         } else {
           logseq.provideStyle(`.ls-block[blockid = "${uuid}"]{direction: ltr;}`)
